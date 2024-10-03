@@ -107,10 +107,17 @@ input::-webkit-input-placeholder {
 }
 
 .side-nav .close-btn {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
-  cursor: pointer;
+    display: flex;
+    justify-content: center; /* Center icon horizontally */
+    align-items: center;     /* Center icon vertically */
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    position: absolute;      /* Absolute positioning for centering */
+    top: 50%;                /* Vertically center */
+    left: 50%;               /* Horizontally center */
+    transform: translate(-50%, -50%); /* Adjust position to center */
+    padding: 20px;
 }
 
 .side-nav .close-btn:hover {
