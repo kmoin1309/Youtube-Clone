@@ -6,15 +6,17 @@ import { BsFillMicFill } from "react-icons/bs";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BsCircleHalf } from "react-icons/bs";
 import YTContext from "../../context/YTContext";
-
+import { useSidebar } from "../../context/SidebarContext"; // Import Sidebar context
 import "./Navbar.css";
 
 const Navbar = () => {
   const { setQuery, fetchVideos } = useContext(YTContext);
+  const { toggleSidebar } = useSidebar(); // Get toggleSidebar from context
 
   const setCurrentQuery = (e) => {
     setQuery(e.target.value);
   };
+
   const listner = (event) => {
     if (event.code === "Enter" || event.code === "NumpadEnter") {
       console.log("Enter key was pressed. Run your function.");
@@ -45,17 +47,22 @@ const Navbar = () => {
     logo === dark ? setLogo(light) : setLogo(dark);
   };
 
-  //const checkbox = logo ? light : dark;
-
   return (
     <>
       <nav className="nav">
         <div className="first">
-          <div className="font ham">
+          <div
+            className="font ham"
+            onClick={toggleSidebar}
+          >
             <RxHamburgerMenu />
           </div>
           <div className="yt_logo">
-            <img id="yt_logo" src={logo} alt="" />
+            <img
+              id="yt_logo"
+              src={logo}
+              alt=""
+            />
           </div>
         </div>
         <div className="second">

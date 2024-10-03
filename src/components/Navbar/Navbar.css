@@ -76,8 +76,83 @@ input::-webkit-input-placeholder {
 }
 
 .side-nav {
-    width: 213px;
-    margin: 5px 20px;
+    width: 213px; /* Original width */
+    background-color: #fff; /* Background color for the sidebar */
+    position: fixed; /* Positioning the sidebar */
+    top: 0; /* Aligning to the top */
+    left: 0; /* Aligning to the left */
+    height: 100vh; /* Full height */
+    overflow: hidden; /* Prevent overflow */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for the open/close */
+}
+/* When sidebar is closed */
+.side-nav.closed {
+    transform: translateX(-100%); /* Slide it out of view */
+}
+
+/* When sidebar is open */
+.side-nav.open {
+    transform: translateX(0); /* Slide it in view */
+}
+@media (max-width: 768px) {
+    .side-nav {
+        transform: translateX(-100%); /* Default closed for mobile */
+    }
+}
+
+@media (min-width: 768px) {
+    .side-nav {
+        transform: translateX(0); /* Default open for PC */
+    }
+}
+
+.side-nav .close-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.side-nav .close-btn:hover {
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}
+
+/* Close Button Styling */
+.side-nav .close-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #333; /* Adjust the color if necessary */
+}
+
+.side-nav .close-btn:hover {
+  background-color: #e0e0e0; /* Light hover effect */
+  border-radius: 50%; /* Makes it circular on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.side-nav .close-btn svg {
+  font-size: 28px; /* Bigger close icon */
+  color: #333; /* Icon color */
+}
+
+.side-nav.open .close-btn {
+  margin-bottom: 10px; /* Adding some space between close button and the rest */
+}
+
+/* Sidebar open/closed states */
+.side-nav.open {
+  width: 250px; /* Adjust the width when it's open */
+  transition: width 0.3s ease;
+}
+
+.side-nav.closed {
+  width: 0; /* Collapse the sidebar completely when closed */
+  overflow: hidden; /* Prevents content from showing */
+  transition: width 0.3s ease;
 }
 
 .mini-icon {
